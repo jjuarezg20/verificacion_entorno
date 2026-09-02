@@ -30,7 +30,8 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      // Tarea 1: título de la barra superior con el nombre del estudiante.
+      home: const MyHomePage(title: 'Juan Andrés Juárez Gómez'),
     );
   }
 }
@@ -58,12 +59,16 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _incrementCounter() {
     setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
+      // Tarea 2: incrementar de dos en dos en lugar de uno en uno.
+      _counter += 2;
+    });
+  }
+
+  // Tarea 3: reinicia el contador a cero. Vive en el mismo State que
+  // _incrementCounter porque ambos métodos necesitan modificar _counter.
+  void _resetCounter() {
+    setState(() {
+      _counter = 0;
     });
   }
 
@@ -112,11 +117,30 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      // Tarea 3: un Scaffold solo acepta un floatingActionButton, así que se
+      // envuelven los dos botones en una Row.
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: <Widget>[
+          FloatingActionButton(
+            heroTag: 'incrementButton',
+            onPressed: _incrementCounter,
+            tooltip: 'Increment',
+            child: const Icon(Icons.add),
+          ),
+          const SizedBox(width: 16),
+          FloatingActionButton(
+            // Dos FloatingActionButton sin heroTag propio comparten el mismo
+            // tag por defecto. No falla en esta pantalla porque no hay
+            // navegación, pero rompería con "There are multiple heroes that
+            // share the same tag within a subtree" en cuanto hubiera un push.
+            heroTag: 'resetButton',
+            onPressed: _resetCounter,
+            tooltip: 'Reset',
+            child: const Icon(Icons.refresh),
+          ),
+        ],
+      ),
     );
   }
 }
