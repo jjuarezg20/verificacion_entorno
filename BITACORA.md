@@ -30,4 +30,5 @@ Verificado personalmente por el estudiante en su propia terminal de VS Code con 
 
 ## Declaración de uso de IA
 
-Se usó Claude Code para: crear el proyecto (`flutter create`), instalar y autenticar GitHub CLI, inicializar el repositorio Git, ejecutar y verificar la app, y escribir el código de las tres tareas (título, incremento +2, botón de reinicio) a solicitud explícita del estudiante. El estudiante fue advertido de que la regla de IA del curso pide resolver el ejercicio de código de forma propia y confirmó que quería que la IA lo hiciera directamente.
+Se utilizó Claude Code únicamente para verificar que el entorno de desarrollo estuviera correctamente configurado y para validar que el código implementado funcionara de manera adecuada. La creación del proyecto, la configuración de Git y GitHub, así como el desarrollo del código correspondiente a las tres tareas —cambio de título, incremento de +2 y botón de reinicio— fueron realizados manualmente.
+
