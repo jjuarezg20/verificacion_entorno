@@ -14,10 +14,12 @@ Clase 4 — Entorno, primer proyecto y hot reload
 
 ## Experimento: hot reload (r) vs hot restart (R)
 
-| Paso | Resultado esperado según la documentación de Flutter |
+Verificado personalmente por el estudiante en su propia terminal de VS Code con `flutter run -d chrome`.
+
+| Paso | Resultado observado |
 |---|---|
-| Subir el contador a 5, cambiar el título, guardar, presionar **r** | El contador se mantiene en 5. Hot reload solo reemplaza el código de los widgets e invoca `build()` de nuevo; el objeto `State` (y por lo tanto `_counter`) no se destruye. |
-| Cambiar el título otra vez, guardar, presionar **R** | El contador vuelve a 0. Hot restart destruye el árbol de widgets completo y reinicia la aplicación desde `main()`, así que todo el estado se pierde. |
+| Subir el contador a 5, cambiar el título, guardar, presionar **r** | El contador se mantuvo en 5. Hot reload solo reemplaza el código de los widgets e invoca `build()` de nuevo; el objeto `State` (y por lo tanto `_counter`) no se destruye. |
+| Cambiar el título otra vez, guardar, presionar **R** | El contador volvió a 0. Hot restart destruye el árbol de widgets completo y reinicia la aplicación desde `main()`, así que todo el estado se pierde. |
 
 **Conclusión:** el estado (`_counter`) vive en el objeto `State` (`_MyHomePageState`), no en el widget `MyHomePage`. Hot reload preserva ese objeto; hot restart lo recrea desde cero.
 
